@@ -2,10 +2,10 @@ package models;
 
 public abstract class Produto {
 	
-	private String codigo;
-	private String preco;
+	protected String codigo;
+	protected double preco;
 	
-	public Produto(String codigo, String produto) {
+	public Produto(String codigo, double produto) {
 		this.codigo = codigo;
 		this.preco = produto;
 	}

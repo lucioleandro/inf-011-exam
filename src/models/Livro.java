@@ -4,13 +4,16 @@ public class Livro extends Produto {
 	
 	private String isbn;
 
-	public Livro(String codigo, String produto, String isbn) {
-		super(codigo, produto);
-		this.isbn = isbn;
+	public Livro(String codigo, double preco) {
+		super(codigo, preco);
 	}
 	
 	public String getIsbn() {
 		return isbn;
+	}
+	
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 	@Override
