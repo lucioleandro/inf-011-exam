@@ -13,11 +13,6 @@ public class Curso extends Produto {
 		this.disciplinas = new ArrayList<>();
 		this.livros = new ArrayList<>();
 	}
-
-	@Override
-	public double getPreco() {
-		return 0;
-	}
 	
 	public void addDisciplina(Disciplina disciplina) {
 		this.disciplinas.add(disciplina);
@@ -25,6 +20,34 @@ public class Curso extends Produto {
 	
 	public void addLivro(Livro livro) {
 		this.livros.add(livro);
+	}
+
+	@Override
+	public double getPreco() {
+		double preco = 0.0;
+		for(Disciplina disciplina: this.disciplinas) {
+			preco += disciplina.getPreco();
+		}
+		for(Livro livro: this.livros) {
+			preco += livro.getPreco();
+		}
+		return preco;
+	}
+	
+	public double getCHTotal() {
+		double chTotal = 0.0;
+		for(Disciplina disciplina: this.disciplinas) {
+			preco += disciplina.getChTotal();
+		}
+		return chTotal;
+	}
+	
+	public double getPctCumprido() {
+		double pctCumprido = 0.0;
+		for(Disciplina disciplina: this.disciplinas) {
+			preco += disciplina.getPctCumprido();
+		}
+		return pctCumprido;
 	}
 
 }
