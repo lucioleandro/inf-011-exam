@@ -30,4 +30,11 @@ public class Disciplina extends Produto {
 		return 0;
 	}
 
+	@Override
+	public String toString() {
+		return "Disciplina [chTotal=" + chTotal + ", pctCumprido=" + pctCumprido + ", codigo=" + codigo + ", preco="
+				+ preco + "]";
+	}
+	
+
 }
