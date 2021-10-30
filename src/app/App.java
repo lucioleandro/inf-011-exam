@@ -70,6 +70,25 @@ public class App {
 			
 		} while (!option.equals("3"));
 	}
+
+	private static void executeFluxoCadastroLivro(Scanner scanner) {
+		String nomeLivro;
+		String codigoProduto;
+		String isbn;
+		
+		System.out.println("Digite o nome do livro");
+		nomeLivro = scanner.nextLine();
+		System.out.println("Digite o código do produto");
+		codigoProduto = scanner.nextLine();
+		System.out.println("Digite o ISBN do livro");
+		isbn = scanner.nextLine();
+		
+		new Livro(nomeLivro, codigoProduto, isbn);
+	}
+
+	private static void executeFluxoListarLivros(Scanner scanner) {
+
+	}
 	
 	private static void executeFluxoDaDisciplina(Scanner scanner) {
 		String option = "";
@@ -92,6 +111,14 @@ public class App {
 			}
 			
 		} while (!option.equals("3"));
+	}
+
+	private void executeFluxoCadastroDisciplina(Scanner scanner) {
+
+	}
+
+	private void executeFluxoListarDisciplinas() {
+
 	}
 	
 	private static void executeFluxoDoCurso(Scanner scanner) {
