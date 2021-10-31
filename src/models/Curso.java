@@ -3,7 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Curso extends Produto {
+public class Curso extends Produto implements Cloneable {
 	
 	private List<Disciplina> disciplinas;
 	private List<Livro> livros;
@@ -51,7 +51,7 @@ public class Curso extends Produto {
 	}
 	
 	@Override
-	public Produto clone() {
+	public Produto cloneable() {
 		return null;
 	}
 	

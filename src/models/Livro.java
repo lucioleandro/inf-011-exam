@@ -27,12 +27,6 @@ public class Livro extends Produto {
 	}
 
 	@Override
-	public Produto clone() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	@Override
 	public String toString() {
 		return "Livro [isbn=" + isbn + ", codigo=" + codigo + ", preco=" + preco + "]";
 	}
