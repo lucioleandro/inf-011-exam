@@ -31,10 +31,16 @@ public class Disciplina extends Produto {
 	}
 
 	@Override
+	public Produto clone() {
+		return null;
+	}
+	
+	@Override
 	public String toString() {
 		return "Disciplina [chTotal=" + chTotal + ", pctCumprido=" + pctCumprido + ", codigo=" + codigo + ", preco="
 				+ preco + "]";
 	}
+
 	
 
 }

@@ -15,5 +15,7 @@ public abstract class Produto {
 	}
 	
 	public abstract double getPreco();
+	
+	public abstract Produto clone();
 
 }

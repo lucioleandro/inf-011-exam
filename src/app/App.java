@@ -6,6 +6,7 @@ import java.util.Scanner;
 import enums.ProdutosEnum;
 import factories.FabricaDisciplina;
 import factories.FabricaLivro;
+import models.Curso;
 import models.Disciplina;
 import models.Livro;
 import models.Produto;
@@ -175,6 +176,7 @@ public class App {
 			switch (option) {
 			case "1":
 				clearConsole();
+				executeFluxoCadastroCurso(scanner);
 				break;
 			case "2":
 				clearConsole();
@@ -187,6 +189,25 @@ public class App {
 			}
 			
 		} while (!option.equals("3"));
+	}
+	
+	private static void executeFluxoCadastroCurso(Scanner scanner) {
+		String codigoProduto;
+		double precoProduto;
+		
+		System.out.println("Digite o código do produto");
+		codigoProduto = scanner.next();
+		System.out.println("Digite o Preço do produto");
+		precoProduto = scanner.nextDouble();
+		System.out.println("Digite a carga horária da disciplna");
+		
+		Curso curso = (Curso) criaProduto(ProdutosEnum.CUSRO, codigoProduto, precoProduto);
+		
+		App.cursoRepository.create(curso);
+	}
+	
+	private static void executeFluxoListarCurso() {
+		System.out.println(App.cursoRepository.findAll());
 	}
 
 }

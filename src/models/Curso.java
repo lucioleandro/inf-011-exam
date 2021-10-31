@@ -49,5 +49,17 @@ public class Curso extends Produto {
 		}
 		return pctCumprido;
 	}
+	
+	@Override
+	public Produto clone() {
+		return null;
+	}
+	
+	@Override
+	public String toString() {
+		return "Curso [disciplinas=" + disciplinas + ", livros=" + livros + ", codigo=" + codigo + ", preco=" + preco
+				+ "]";
+	}
+
 
 }
