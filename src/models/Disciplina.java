@@ -5,8 +5,8 @@ public class Disciplina extends Produto {
 	private int chTotal;
 	private double pctCumprido;
 
-	public Disciplina(String codigo, double preco) {
-		super(codigo, preco);
+	public Disciplina(String codigo, String nome, double preco) {
+		super(codigo, nome, preco);
 	}
 
 	public int getChTotal() {
@@ -32,9 +32,10 @@ public class Disciplina extends Produto {
 
 	@Override
 	public String toString() {
-		return "Disciplina [chTotal=" + chTotal + ", pctCumprido=" + pctCumprido + ", codigo=" + codigo + ", preco="
+		return "Disciplina: " + nome + "\n[chTotal=" + chTotal + "\n pctCumprido=" + pctCumprido + "\n codigo=" + codigo + "\n preco="
 				+ preco + "]";
 	}
+
 
 	
 

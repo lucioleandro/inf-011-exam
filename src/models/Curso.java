@@ -8,8 +8,8 @@ public class Curso extends Produto implements Cloneable {
 	private List<Disciplina> disciplinas;
 	private List<Livro> livros;
 
-	public Curso(String codigo, double produto) {
-		super(codigo, produto);
+	public Curso(String codigo, String nome, double produto) {
+		super(codigo, nome, produto);
 		this.disciplinas = new ArrayList<>();
 		this.livros = new ArrayList<>();
 	}
@@ -54,12 +54,13 @@ public class Curso extends Produto implements Cloneable {
 	public Produto cloneable() {
 		return null;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Curso [disciplinas=" + disciplinas + ", livros=" + livros + ", codigo=" + codigo + ", preco=" + preco
-				+ "]";
+		return "Curso: " + nome +  "\n[disciplinas=" + disciplinas + "\n livros=" + livros + "\n codigo=" + codigo
+				+ "\n preco=" + preco + "]";
 	}
-
-
+	
+	
+	
 }

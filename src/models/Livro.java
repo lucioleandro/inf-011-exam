@@ -4,13 +4,8 @@ public class Livro extends Produto {
 	
 	private String isbn;
 
-	public Livro(String codigo, double preco) {
-		super(codigo, preco);
-	}
-	
-	public Livro(String codigo, double preco, String isbn) {
-		super(codigo, preco);
-		this.isbn = isbn;
+	public Livro(String codigo,String nome, double preco) {
+		super(codigo, nome, preco);
 	}
 	
 	public String getIsbn() {
@@ -28,7 +23,7 @@ public class Livro extends Produto {
 
 	@Override
 	public String toString() {
-		return "Livro [isbn=" + isbn + ", codigo=" + codigo + ", preco=" + preco + "]";
+		return "Livro: " + nome + "\n[isbn=" + isbn + "\n codigo=" + codigo + "\n preco=" + preco + "]";
 	}
 
 	

@@ -50,12 +50,12 @@ public class App {
 		scanner.close();
 	}
 	
-	private static Produto criaProduto(ProdutosEnum tipo, String codigo, double preco) {
+	private static Produto criaProduto(ProdutosEnum tipo, String nome, String codigo, double preco) {
 		if(ProdutosEnum.LIVRO.equals(tipo)) {
-			return new FabricaLivro().criaProduto(codigo, preco);
+			return new FabricaLivro().criaProduto(codigo,nome, preco);
 		} 
-		else if(ProdutosEnum.DISCIPLINA.equals(tipo.DISCIPLINA)) {
-			return new FabricaDisciplina().criaProduto(codigo, preco);
+		else if(ProdutosEnum.DISCIPLINA.equals(tipo)) {
+			return new FabricaDisciplina().criaProduto(codigo, nome, preco);
 		}
 		else {
 			return null;
@@ -94,17 +94,20 @@ public class App {
 
 	private static void executeFluxoCadastroLivro(Scanner scanner) {
 		String codigoProduto;
+		String nomeProduto;
 		double precoProduto;
 		String isbn;
 		
 		System.out.println("Digite o código do produto");
 		codigoProduto = scanner.next();
+		System.out.println("Digite o nome do produto");
+		nomeProduto = scanner.next();
 		System.out.println("Digite o Preço do produto");
 		precoProduto = scanner.nextDouble();
 		System.out.println("Digite o ISBN do livro");
 		isbn = scanner.next();
 		
-		Livro livro = (Livro) criaProduto(ProdutosEnum.LIVRO, codigoProduto, precoProduto);
+		Livro livro = (Livro) criaProduto(ProdutosEnum.LIVRO, codigoProduto, nomeProduto, precoProduto);
 		livro.setIsbn(isbn);
 		
 		App.livroRepository.create(livro);
@@ -142,12 +145,15 @@ public class App {
 
 	private static void executeFluxoCadastroDisciplina(Scanner scanner) {
 		String codigoProduto;
+		String nomeProduto;
 		double precoProduto;
 		int chTotal;
 		double pctCumprido;
 		
 		System.out.println("Digite o código do produto");
 		codigoProduto = scanner.next();
+		System.out.println("Digite o nome do produto");
+		nomeProduto = scanner.next();
 		System.out.println("Digite o Preço do produto");
 		precoProduto = scanner.nextDouble();
 		System.out.println("Digite a carga horária da disciplna");
@@ -155,7 +161,7 @@ public class App {
 		System.out.println("Digite a porcentagem cumprida");
 		pctCumprido = scanner.nextDouble();
 		
-		Disciplina disciplina = (Disciplina) criaProduto(ProdutosEnum.DISCIPLINA, codigoProduto, precoProduto);
+		Disciplina disciplina = (Disciplina) criaProduto(ProdutosEnum.DISCIPLINA, codigoProduto, nomeProduto, precoProduto);
 		disciplina.setChTotal(chTotal);
 		disciplina.setPctCumprido(chTotal);
 		
@@ -193,17 +199,20 @@ public class App {
 	
 	private static void executeFluxoCadastroCurso(Scanner scanner) {
 		String codigoProduto;
+		String nomeProduto;
 		double precoProduto;
 		
 		System.out.println("Digite o código do produto");
 		codigoProduto = scanner.next();
+		System.out.println("Digite o nome do produto");
+		nomeProduto = scanner.next();
 		System.out.println("Digite o Preço do produto");
 		precoProduto = scanner.nextDouble();
 		System.out.println("Digite a carga horária da disciplna");
 		
-		Curso curso = (Curso) criaProduto(ProdutosEnum.CUSRO, codigoProduto, precoProduto);
+		Curso curso = (Curso) criaProduto(ProdutosEnum.CUSRO, codigoProduto, nomeProduto, precoProduto);
 		
-		App.cursoRepository.create(curso);
+		App.cursoRepository.criaERegistraPrototipo(curso);
 	}
 	
 	private static void executeFluxoListarCurso() {
