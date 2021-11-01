@@ -1,6 +1,7 @@
 package app;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Scanner;
 
 import enums.ProdutosEnum;
@@ -170,7 +171,12 @@ public class App {
 	}
 
 	private static void executeFluxoListarDisciplinas() {
-		System.out.println(App.disciplinaRepository.findAll());
+		List<Disciplina> disciplinas = App.disciplinaRepository.findAll();
+		if(disciplinas.isEmpty()) {
+			System.out.println("Ainda não há disciplinas cadastradas");
+			return;
+		}
+		System.out.println(disciplinas);
 	}
 	
 	private static void executeFluxoDoCurso(Scanner scanner) {
@@ -216,7 +222,12 @@ public class App {
 	}
 	
 	private static void executeFluxoListarCurso() {
-		System.out.println(App.cursoRepository.findAll());
+		List<Curso> cursos = App.cursoRepository.findAll();
+		if(cursos.isEmpty()) {
+			System.out.println("Ainda não há cursos cadastrados");
+			return;
+		}
+		System.out.println(cursos);
 	}
 
 }
