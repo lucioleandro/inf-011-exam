@@ -23,7 +23,11 @@ public class Livro extends Produto {
 
 	@Override
 	public String toString() {
-		return "Livro: " + nome + "\n[isbn=" + isbn + "\n codigo=" + codigo + "\n preco=" + preco + "]";
+		return "{\n"
+				+ "	Livro: " + nome 
+				+ "\n	isbn: " + isbn 
+				+ "\n 	codigo: " + codigo 
+				+ "\n 	preco: " + preco + "\n}";
 	}
 
 	

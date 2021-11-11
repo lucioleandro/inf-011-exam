@@ -19,5 +19,15 @@ public class LivroRepository {
 	public List<Livro> findAll() {
 		return this.livros;
 	}
+	public Livro findByCodigo(String codigo) {
+		Livro livro = null;
+		for(Livro liv : this.livros) {
+			if(liv.getCodigo().equals(codigo)) {
+				livro = liv;
+				break;
+			}
+		}
+		return livro;
+	}
 
 }

@@ -37,7 +37,7 @@ public class Curso extends Produto implements Cloneable {
 	public double getCHTotal() {
 		double chTotal = 0.0;
 		for(Disciplina disciplina: this.disciplinas) {
-			preco += disciplina.getChTotal();
+			chTotal += disciplina.getChTotal();
 		}
 		return chTotal;
 	}
@@ -45,7 +45,7 @@ public class Curso extends Produto implements Cloneable {
 	public double getPctCumprido() {
 		double pctCumprido = 0.0;
 		for(Disciplina disciplina: this.disciplinas) {
-			preco += disciplina.getPctCumprido();
+			pctCumprido += disciplina.getPctCumprido();
 		}
 		return pctCumprido;
 	}
@@ -57,8 +57,15 @@ public class Curso extends Produto implements Cloneable {
 
 	@Override
 	public String toString() {
-		return "Curso: " + nome +  "\n[disciplinas=" + disciplinas + "\n livros=" + livros + "\n codigo=" + codigo
-				+ "\n preco=" + preco + "]";
+		return "{\n"
+				+ "Curso: " + nome 
+				+  "\n	disciplinas: " + disciplinas 
+				+ "\n 	livros: " + livros 
+				+ "\n 	codigo: " + codigo
+				+ "\n 	preco: " + preco
+				+ "\n	cargaHoraria: " + getCHTotal()
+				+ "\n	pctCumprido: " + getPctCumprido()
+				+ "\n}";
 	}
 	
 	

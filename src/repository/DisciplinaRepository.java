@@ -21,4 +21,15 @@ public class DisciplinaRepository {
 		return this.disciplinas;
 	}
 
+	public Disciplina findByCodigo(String codigo) {
+		Disciplina disciplina = null;
+		for(Disciplina dis: this.disciplinas) {
+			if(dis.getCodigo().equals(codigo)) {
+				disciplina = dis;
+				break;
+			}
+		}
+		return disciplina;
+	}
+
 }

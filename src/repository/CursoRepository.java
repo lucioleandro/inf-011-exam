@@ -12,6 +12,7 @@ public class CursoRepository {
 	
 	public CursoRepository() {
 		this.cursos = new ArrayList<>();
+		this.prototipos = new ArrayList<>();
 	}
 	
 	public void criaERegistraPrototipo(Curso curso) {

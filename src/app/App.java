@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import enums.ProdutosEnum;
+import factories.FabricaCurso;
 import factories.FabricaDisciplina;
 import factories.FabricaLivro;
 import models.Curso;
@@ -23,6 +24,23 @@ public class App {
 	private static CursoRepository cursoRepository = new CursoRepository();
 	
 	public static void main(String[] args) throws IOException, InterruptedException {
+		Livro livro1 = new Livro("789", "Algoritmos do Corman", 100.0);
+		livro1.setIsbn("hauahuah-hauahuaha");
+		Livro livro2 = new Livro("789", "Padrões de projeto", 100.0);
+		livro2.setIsbn("hauahuah-tyrtrtrtr");
+		App.livroRepository.create(livro1);
+		App.livroRepository.create(livro2);
+		
+		Disciplina disciplina1 = new Disciplina("555", "Padrões de Projetos", 50.0);
+		disciplina1.setChTotal(90);
+		disciplina1.setPctCumprido(0);
+		Disciplina disciplina2 = new Disciplina("667", "Orientação a Objetos", 60.0);
+		disciplina2.setChTotal(60);
+		disciplina2.setPctCumprido(0);
+		
+		App.disciplinaRepository.create(disciplina1);
+		App.disciplinaRepository.create(disciplina2);
+		
 		Scanner scanner = new Scanner(System.in);
 		String option = "";
 		do {
@@ -59,7 +77,7 @@ public class App {
 			return new FabricaDisciplina().criaProduto(codigo, nome, preco);
 		}
 		else {
-			return null;
+			return new FabricaCurso().criaProduto(codigo, nome, preco);
 		}
 	}
 	
@@ -176,6 +194,7 @@ public class App {
 			System.out.println("Ainda não há disciplinas cadastradas");
 			return;
 		}
+		System.out.println("--- Disciplinas Cadastradas ---");
 		System.out.println(disciplinas);
 	}
 	
@@ -192,6 +211,7 @@ public class App {
 				break;
 			case "2":
 				clearConsole();
+				executeFluxoListarCurso();
 				break;
 			case "3":
 				clearConsole();
@@ -214,11 +234,52 @@ public class App {
 		nomeProduto = scanner.next();
 		System.out.println("Digite o Preço do produto");
 		precoProduto = scanner.nextDouble();
-		System.out.println("Digite a carga horária da disciplna");
 		
 		Curso curso = (Curso) criaProduto(ProdutosEnum.CUSRO, codigoProduto, nomeProduto, precoProduto);
 		
+		executeFluxoAdicionarElementosCurso(scanner, curso);
+		
 		App.cursoRepository.criaERegistraPrototipo(curso);
+	}
+	
+	private static void executeFluxoAdicionarElementosCurso(Scanner scanner, Curso curso) {
+		String option = "";
+		do {
+			System.out.println("=======================================");
+			System.out.println("Adicone Livros e Disciplinas ao Curso");
+			System.out.println("=======================================");
+			System.out.println();
+			System.out.println("Digite 1 para adicionar um livro");
+			System.out.println("Digite 2 para adicionar uma disciplina");
+			System.out.println("Digite 3 para voltar para tela principal");
+			System.out.println();
+			option = scanner.next();
+			
+			switch (option) {
+			case "1":
+				clearConsole();
+				System.out.println(App.livroRepository.findAll());
+				System.out.println("Digite o código de um dos livros acima para adicioná-lo");
+				String codigoLivro = scanner.next();
+				Livro livro = App.livroRepository.findByCodigo(codigoLivro);
+				curso.addLivro(livro);
+				break;
+			case "2":
+				clearConsole();
+				System.out.println(App.disciplinaRepository.findAll());
+				System.out.println("Digite o código de uma das disciplinas acima para adicioná-la");
+				String codigoDisciplina = scanner.next();
+				Disciplina disciplina = App.disciplinaRepository.findByCodigo(codigoDisciplina);
+				curso.addDisciplina(disciplina);
+				break;
+			case "3":
+				clearConsole();
+			default:
+				System.out.println("Opção não aceita, tente novamente");
+				break;
+			}
+			
+		} while (!option.equals("3"));
 	}
 	
 	private static void executeFluxoListarCurso() {

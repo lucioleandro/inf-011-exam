@@ -32,8 +32,12 @@ public class Disciplina extends Produto {
 
 	@Override
 	public String toString() {
-		return "Disciplina: " + nome + "\n[chTotal=" + chTotal + "\n pctCumprido=" + pctCumprido + "\n codigo=" + codigo + "\n preco="
-				+ preco + "]";
+		return "{\n"
+				+ "	Disciplina: " + nome 
+				+ "\n	chTotal: " + chTotal 
+				+ "\n 	pctCumprido: " + pctCumprido 
+				+ "\n	codigo: " + codigo 
+				+ "\n'	preco: "+ preco + "\n}";
 	}
 
 
