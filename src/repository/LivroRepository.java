@@ -7,10 +7,26 @@ import models.Livro;
 
 public class LivroRepository {
 	
+	private static LivroRepository repository;
+	
 	private List<Livro> livros;
 	
-	public LivroRepository() {
+	private LivroRepository() {
 		this.livros = new ArrayList<>();
+		Livro livro1 = new Livro("789", "Algoritmos do Corman", 100.0);
+		livro1.setIsbn("hauahuah-hauahuaha");
+		Livro livro2 = new Livro("789", "Padrões de projeto", 100.0);
+		livro2.setIsbn("hauahuah-tyrtrtrtr");
+		create(livro1);
+		create(livro2);
+	}
+	
+	public static LivroRepository getInstance() {
+		if(repository == null ) {
+			repository = new LivroRepository();
+			return repository;
+		}
+		return repository;
 	}
 	public void create(Livro livro) {
 		this.livros.add(livro);

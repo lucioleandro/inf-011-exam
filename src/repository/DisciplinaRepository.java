@@ -7,10 +7,29 @@ import models.Disciplina;
 
 public class DisciplinaRepository {
 	
+	private static DisciplinaRepository repository;
+	
 	private List<Disciplina> disciplinas;
 	
-	public DisciplinaRepository() {
+	private DisciplinaRepository() {
 		this.disciplinas = new ArrayList<>();
+		Disciplina disciplina1 = new Disciplina("555", "Padrões de Projetos", 50.0);
+		disciplina1.setChTotal(90);
+		disciplina1.setPctCumprido(0);
+		Disciplina disciplina2 = new Disciplina("667", "Orientação a Objetos", 60.0);
+		disciplina2.setChTotal(60);
+		disciplina2.setPctCumprido(0);
+		
+		create(disciplina1);
+		create(disciplina2);
+	}
+	
+	public static DisciplinaRepository getInstance() {
+		if(repository == null) {
+			repository = new DisciplinaRepository();
+			return repository;
+		}
+		return repository;
 	}
 	
 	public void create(Disciplina disciplina) {
