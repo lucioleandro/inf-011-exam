@@ -3,13 +3,13 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Curso extends Produto implements Cloneable {
+public class Curso extends Produto implements Prototipo {
 	
 	private List<Disciplina> disciplinas;
 	private List<Livro> livros;
 
-	public Curso(String codigo, String nome, double produto) {
-		super(codigo, nome, produto);
+	public Curso(String codigo, String nome, double preco) {
+		super(codigo, nome, preco);
 		this.disciplinas = new ArrayList<>();
 		this.livros = new ArrayList<>();
 	}
@@ -51,7 +51,7 @@ public class Curso extends Produto implements Cloneable {
 	}
 	
 	@Override
-	public Produto cloneable() {
+	public Prototipo prototipar() {
 		return null;
 	}
 

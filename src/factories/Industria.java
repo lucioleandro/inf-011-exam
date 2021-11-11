@@ -5,7 +5,7 @@ import models.Produto;
 
 public class Industria {
 
-	public static Produto criaProduto(ProdutosEnum tipo, String nome, String codigo, double preco) {
+	public static Produto criaProduto(ProdutosEnum tipo, String codigo, String nome, double preco) {
 		if(ProdutosEnum.LIVRO.equals(tipo)) {
 			return new FabricaLivro().criaProduto(codigo,nome, preco);
 		} 

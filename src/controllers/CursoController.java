@@ -7,6 +7,7 @@ import enums.ProdutosEnum;
 import factories.Industria;
 import models.Curso;
 import models.Disciplina;
+import models.GerenciadorPrototipos;
 import models.Livro;
 import repository.CursoRepository;
 import repository.DisciplinaRepository;
@@ -43,12 +44,16 @@ public class CursoController {
 				break;
 			case "3":
 				Utils.clearConsole();
+				executeFLuxoClonarCurso(scanner);
+				break;
+			case "4":
+				Utils.clearConsole();
 			default:
 				System.out.println("Opção não aceita, tente novamente");
 				break;
 			}
 			
-		} while (!option.equals("3"));
+		} while (!option.equals("4"));
 	}
 	
 	private void executeFluxoCadastroCurso(Scanner scanner) {
@@ -63,7 +68,7 @@ public class CursoController {
 		System.out.println("Digite o Preço do produto");
 		precoProduto = scanner.nextDouble();
 		
-		Curso curso = (Curso) Industria.criaProduto(ProdutosEnum.CUSRO, codigoProduto, nomeProduto, precoProduto);
+		Curso curso = (Curso) Industria.criaProduto(ProdutosEnum.CURSO, codigoProduto, nomeProduto, precoProduto);
 		
 		executeFluxoAdicionarElementosCurso(scanner, curso);
 		
@@ -117,6 +122,15 @@ public class CursoController {
 			return;
 		}
 		System.out.println(cursos);
+	}
+	
+	private void executeFLuxoClonarCurso(Scanner scanner) {
+		System.out.println(GerenciadorPrototipos.getInstance().findAll());
+		System.out.println("Digite o nome do curso que você deseja usar como modelo");
+		String nomeCurso = scanner.next();
+		Curso curso = this.repository.findByNome(nomeCurso);
+		Curso prototipo = (Curso) curso.prototipar();
+		repository.cria(prototipo);
 	}
 
 }

@@ -44,7 +44,8 @@ public class MenuUtils {
 		System.out.println();
 		System.out.println("Digite 1 para cadastrar um novo Curso");
 		System.out.println("Digite 2 para Listar os cursos cadastrados");
-		System.out.println("Digite 3 para voltar para tela principal");
+		System.out.println("Digite 3 para clonar um curso");
+		System.out.println("Digite 4 para voltar para tela principal");
 		System.out.println();
 	}
 }
