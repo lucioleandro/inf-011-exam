@@ -3,7 +3,11 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.situacao.Situacao;
+
 public class Curso extends Produto implements Prototipo {
+	
+	private Situacao situacao;
 	
 	private List<Disciplina> disciplinas;
 	private List<Livro> livros;
@@ -13,7 +17,7 @@ public class Curso extends Produto implements Prototipo {
 		this.disciplinas = new ArrayList<>();
 		this.livros = new ArrayList<>();
 	}
-	
+
 	public void addDisciplina(Disciplina disciplina) {
 		this.disciplinas.add(disciplina);
 	}
