@@ -63,7 +63,6 @@ public class DisciplinaController {
 		
 		Disciplina disciplina = (Disciplina) Industria.criaProduto(ProdutosEnum.DISCIPLINA, codigoProduto, nomeProduto, precoProduto);
 		disciplina.setChTotal(chTotal);
-		disciplina.setPctCumprido(pctCumprido);
 		
 		this.disciplinaRepository.create(disciplina);
 		

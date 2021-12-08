@@ -23,6 +23,10 @@ public class Curso extends Produto implements Prototipo {
 		this.disciplinas.add(disciplina);
 	}
 	
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
+	}
+	
 	public Disciplina getDisciplinaByCodigo(String codigo) {
 		Disciplina disciplina = null;
 		for(Disciplina dis: this.disciplinas) {
@@ -38,8 +42,16 @@ public class Curso extends Produto implements Prototipo {
 		this.livros.add(livro);
 	}
 	
+	public void setLivros(List<Livro> livros) {
+		this.livros = livros;
+	}
+	
 	public void setSituacao(Situacao situacao) {
 		this.situacao = situacao;
+	}
+	
+	public CursoSnapshot createSnapShot() {
+		return new CursoSnapshot(this, this.disciplinas, this.livros, this.situacao);
 	}
 	
 	public void avancar(String codigoDisciplina, double porcentagem) {
