@@ -7,6 +7,7 @@ public class Disciplina extends Produto {
 
 	public Disciplina(String codigo, String nome, double preco) {
 		super(codigo, nome, preco);
+		this.pctCumprido = 0.0;
 	}
 
 	public int getChTotal() {
@@ -21,10 +22,10 @@ public class Disciplina extends Produto {
 		return pctCumprido;
 	}
 	
-	public void setPctCumprido(double pctCumprido) {
-		this.pctCumprido = pctCumprido;
+	public void incrementaPorcentagem(double porcentagem) {
+		this.pctCumprido += porcentagem;
 	}
-
+	
 	@Override
 	public double getPreco() {
 		return 0;
@@ -40,7 +41,5 @@ public class Disciplina extends Produto {
 				+ "\n'	preco: "+ preco + "\n}";
 	}
 
-
-	
 
 }

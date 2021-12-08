@@ -4,26 +4,58 @@ import java.util.ArrayList;
 import java.util.List;
 
 import models.situacao.Situacao;
+import models.situacao.SituacaoEmAndamento;
 
 public class Curso extends Produto implements Prototipo {
 	
-	private Situacao situacao;
-	
 	private List<Disciplina> disciplinas;
 	private List<Livro> livros;
+	private Situacao situacao;
 
 	public Curso(String codigo, String nome, double preco) {
 		super(codigo, nome, preco);
 		this.disciplinas = new ArrayList<>();
 		this.livros = new ArrayList<>();
+		this.situacao = new SituacaoEmAndamento();
 	}
-
+	
 	public void addDisciplina(Disciplina disciplina) {
 		this.disciplinas.add(disciplina);
 	}
 	
+	public Disciplina getDisciplinaByCodigo(String codigo) {
+		Disciplina disciplina = null;
+		for(Disciplina dis: this.disciplinas) {
+			if(dis.getCodigo().equals(codigo)) {
+				disciplina = dis;
+				break;
+			}
+		}
+		return disciplina;
+	}
+	
 	public void addLivro(Livro livro) {
 		this.livros.add(livro);
+	}
+	
+	public void setSituacao(Situacao situacao) {
+		this.situacao = situacao;
+	}
+	
+	public void avancar(String codigoDisciplina, double porcentagem) {
+		this.situacao.avancar(codigoDisciplina, porcentagem, this);
+	}
+	
+	public void checkpoint(String codigoDisciplina) {
+		this.situacao.checkPoint(codigoDisciplina, this);
+	}
+	
+	public void restore(String codigoDisciplina) {
+		this.situacao.restore(codigoDisciplina, this);
+	}
+	
+	public void certificado() {
+		this.situacao.certificado(this);
 	}
 
 	@Override
@@ -71,7 +103,7 @@ public class Curso extends Produto implements Prototipo {
 				+ "\n	pctCumprido: " + getPctCumprido()
 				+ "\n}";
 	}
-	
+
 	
 	
 }
