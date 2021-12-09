@@ -4,14 +4,14 @@ import java.util.List;
 
 import models.state.State;
 
-public class CursoSnapshot {
+public class Situacao {
 	
 	private Curso curso;
 	private List<Disciplina> disciplinas;
 	private List<Livro> livros;
 	private State situacao;
 	
-	public CursoSnapshot(Curso curso, List<Disciplina> disciplinas, List<Livro> livros, State situacao) {
+	public Situacao(Curso curso, List<Disciplina> disciplinas, List<Livro> livros, State situacao) {
 		this.curso = curso;
 		this.disciplinas = disciplinas;
 		this.livros = livros;

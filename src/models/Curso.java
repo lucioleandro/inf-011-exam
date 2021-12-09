@@ -50,8 +50,8 @@ public class Curso extends Produto implements Prototipo {
 		this.state = situacao;
 	}
 	
-	public CursoSnapshot createSnapShot() {
-		return new CursoSnapshot(this, this.disciplinas, this.livros, this.state);
+	public Situacao createSnapShot() {
+		return new Situacao(this, this.disciplinas, this.livros, this.state);
 	}
 	
 	public void avancar(String codigoDisciplina, double porcentagem) {
