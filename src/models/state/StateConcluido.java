@@ -1,8 +1,8 @@
-package models.situacao;
+package models.state;
 
 import models.Curso;
 
-public class SituacaoConcluido extends Situacao {
+public class StateConcluido extends State {
 
 	@Override
 	public void certificado(Curso curso) {
