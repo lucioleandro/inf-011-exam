@@ -62,8 +62,8 @@ public class Curso extends Produto implements Prototipo {
 		this.situacao.checkPoint(this);
 	}
 	
-	public void restore(String codigoDisciplina) {
-		this.situacao.restore();
+	public void restore() {
+		this.situacao.restore(this);
 	}
 	
 	public void certificado() {

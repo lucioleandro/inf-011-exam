@@ -17,7 +17,7 @@ public abstract class Situacao {
 		throw new SituacaoException("Não é possível fazer checkpoint do curso");
 	}
 	
-	public void restore() {
+	public void restore(Curso curso) {
 		throw new SituacaoException("Não é possível restaurar o curso");
 	}
 	

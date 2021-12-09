@@ -1,7 +1,9 @@
-package models;
+package models.observer;
+
+import models.Curso;
 
 public interface PublisherCheckpointCurso {
 	void subscribe(Listener listener);
 	void unsubscribe(Listener listener);
-	void notfy(Curso curso);
+	void notify(Curso curso);
 }
