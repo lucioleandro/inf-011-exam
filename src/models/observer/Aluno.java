@@ -1,23 +1,34 @@
 package models.observer;
 
 import models.Curso;
-import models.strategy.EnviadoraBase;
 import models.strategy.EnviadoraStatusCurso;
 
-public class Aluno implements  Listener {
+public class Aluno implements Listener {
 	
 	private String nome;
+	private String email;
 	private EnviadoraStatusCurso enviadora;
 	
 
-	public Aluno(String nome, EnviadoraStatusCurso enviadora) {
+	public Aluno(String nome, String email, EnviadoraStatusCurso enviadora) {
 		this.nome = nome;
 		this.enviadora = enviadora;
+		this.email = email;
 	}
 
-
+	@Override
+	public String getNome() {
+		return nome;
+	}
+	
+	@Override
+	public String getEmail() {
+		return email;
+	}
+	
+	@Override
 	public void aviseMe(Curso curso) {
-		((EnviadoraBase) this.enviadora).montaEEnviaMensagem(curso);
+		this.enviadora.montaEEnviaMensagem(curso, this);
 	}
 
 }
