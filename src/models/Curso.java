@@ -59,11 +59,11 @@ public class Curso extends Produto implements Prototipo {
 	}
 	
 	public void checkpoint(String codigoDisciplina) {
-		this.situacao.checkPoint(codigoDisciplina, this);
+		this.situacao.checkPoint(this);
 	}
 	
 	public void restore(String codigoDisciplina) {
-		this.situacao.restore(codigoDisciplina, this);
+		this.situacao.restore();
 	}
 	
 	public void certificado() {

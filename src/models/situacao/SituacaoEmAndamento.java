@@ -17,13 +17,13 @@ public class SituacaoEmAndamento extends Situacao {
 	}
 	
 	@Override
-	public void checkPoint(String codigoDisciplina, Curso curso) {
-		throw new SituacaoException("Não é possível fazer checkpoint do curso");
+	public void checkPoint(Curso curso) {
+		this.checks.add(curso.createSnapShot());
 	}
 	
 	@Override
-	public void restore(String codigoDisciplina, Curso curso) {
-		throw new SituacaoException("Não é possível restaurar o curso");
+	public void restore() {
+		this.checks.pop().restore();
 	}
 
 }
