@@ -3,20 +3,20 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-import models.situacao.Situacao;
-import models.situacao.SituacaoEmAndamento;
+import models.state.State;
+import models.state.StateEmAndamento;
 
 public class Curso extends Produto implements Prototipo {
 	
 	private List<Disciplina> disciplinas;
 	private List<Livro> livros;
-	private Situacao situacao;
+	private State state;
 
 	public Curso(String codigo, String nome, double preco) {
 		super(codigo, nome, preco);
 		this.disciplinas = new ArrayList<>();
 		this.livros = new ArrayList<>();
-		this.situacao = new SituacaoEmAndamento();
+		this.state = new StateEmAndamento();
 	}
 	
 	public void addDisciplina(Disciplina disciplina) {
@@ -46,28 +46,28 @@ public class Curso extends Produto implements Prototipo {
 		this.livros = livros;
 	}
 	
-	public void setSituacao(Situacao situacao) {
-		this.situacao = situacao;
+	public void setSituacao(State situacao) {
+		this.state = situacao;
 	}
 	
-	public CursoSnapshot createSnapShot() {
-		return new CursoSnapshot(this, this.disciplinas, this.livros, this.situacao);
+	public Situacao createSnapShot() {
+		return new Situacao(this, this.disciplinas, this.livros, this.state);
 	}
 	
 	public void avancar(String codigoDisciplina, double porcentagem) {
-		this.situacao.avancar(codigoDisciplina, porcentagem, this);
+		this.state.avancar(codigoDisciplina, porcentagem, this);
 	}
 	
 	public void checkpoint(String codigoDisciplina) {
-		this.situacao.checkPoint(this);
+		this.state.checkPoint(this);
 	}
 	
 	public void restore() {
-		this.situacao.restore(this);
+		this.state.restore(this);
 	}
 	
 	public void certificado() {
-		this.situacao.certificado(this);
+		this.state.certificado(this);
 	}
 
 	@Override

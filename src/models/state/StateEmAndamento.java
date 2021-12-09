@@ -1,10 +1,10 @@
-package models.situacao;
+package models.state;
 
 import models.Curso;
 import models.Disciplina;
 import models.observer.NotificationManager;
 
-public class SituacaoEmAndamento extends Situacao {
+public class StateEmAndamento extends State {
 	
 	private NotificationManager notificador;
 	
@@ -15,7 +15,7 @@ public class SituacaoEmAndamento extends Situacao {
 			disciplina.incrementaPorcentagem(porcentagem);
 		}
 		if(curso.getPctCumprido() == 100.0) {
-			curso.setSituacao(new SituacaoConcluido());
+			curso.setSituacao(new StateConcluido());
 		}
 	}
 	

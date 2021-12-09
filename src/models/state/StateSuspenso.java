@@ -1,9 +1,9 @@
-package models.situacao;
+package models.state;
 
 import models.Curso;
 import models.observer.NotificationManager;
 
-public class SituacaoSuspenso extends Situacao {
+public class StateSuspenso extends State {
 	
 	private NotificationManager notificador;
 	
