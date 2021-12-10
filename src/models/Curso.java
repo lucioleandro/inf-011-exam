@@ -58,7 +58,7 @@ public class Curso extends Produto implements Prototipo {
 		this.state.avancar(codigoDisciplina, porcentagem, this);
 	}
 	
-	public void checkpoint(String codigoDisciplina) {
+	public void checkpoint() {
 		this.state.checkPoint(this);
 	}
 	

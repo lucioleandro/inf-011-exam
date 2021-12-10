@@ -16,6 +16,9 @@ public class StateEmAndamento extends State {
 		}
 		if(curso.getPctCumprido() == 100.0) {
 			curso.setSituacao(new StateConcluido());
+			this.notificador.notify(curso);
+		} else {
+			curso.checkpoint();
 		}
 	}
 	
